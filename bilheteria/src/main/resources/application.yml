@@ -1,0 +1,27 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate.format_sql: true
+  h2:
+    console:
+      enabled: ${H2_CONSOLE:false}
+      path: /h2-console
+
+rk:
+  payments:
+    pixKey: ${PIX_KEY}
+    merchant: ${PIX_MERCHANT}
+    city: ${PIX_CITY}
+  pricing:
+    male: ${PRICE_MALE:25.00}
+    female: ${PRICE_FEMALE:15.00}

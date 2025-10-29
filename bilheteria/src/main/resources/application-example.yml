@@ -1,0 +1,47 @@
+# ============================================================
+#  BILHETERIA (exemplo de configuração)
+#  Copie este arquivo para application-local.yml
+#  e preencha as variáveis de ambiente necessárias.
+# ============================================================
+
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:h2:mem:bilheteria;DB_CLOSE_DELAY=-1;MODE=MySQL;DATABASE_TO_UPPER=false}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.dialect.H2Dialect}
+        format_sql: true
+    open-in-view: false
+
+  h2:
+    console:
+      enabled: ${H2_CONSOLE_ENABLED:true}
+      path: /h2-console
+
+rk:
+  payments:
+    pixKey: ${PIX_KEY:pix@example.com}        # Chave Pix (substituir)
+    merchant: ${PIX_MERCHANT:Nome do Comerciante}
+    city: ${PIX_CITY:Cidade}
+
+  pricing:
+    male: ${PRICE_MALE:25.00}
+    female: ${PRICE_FEMALE:15.00}
+
+# ============================================================
+#  Instruções:
+#  1. Copie para application-local.yml
+#  2. Configure variáveis de ambiente (DB_URL, DB_USERNAME, PIX_KEY etc.)
+#  3. NÃO comitar application-local.yml com segredos reais.
+# ============================================================
